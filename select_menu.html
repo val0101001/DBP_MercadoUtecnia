@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<header></header>
+<Title> test </Title>
+<body>
+
+<form action="get.php" onsubmit="foo()" id="Form">
+
+	Database name:<br>
+        <Input Type=Text id="db" name="DB"><br>
+        Table name:<br>
+        <Input Type=Text id="table" name="Table"><br>
+	Select action:
+	<Select name="Action" id="action"><br>
+		<Option value="add" selected> Add value
+		<Option value="get"> Get values
+		<Option value="edit"> Edit value
+		<Option value="delete"> Delete value
+	<input Type=Submit value="Submit">
+
+</form>
+
+<script src="functions.js"></script>
+
+<script>
+
+	var form=document.getElementById("Form");
+	var action=document.getElementById("action");
+	
+	action.addEventListener("change",function(){
+		var val=action.options[action.selectedIndex].value;
+		
+		if(val=="get"){
+			form.setAttribute("method","get");
+		}
+		else{
+			form.setAttribute("method","post");
+		}
+	});
+
+</script>
+
+</body>
+
+</html>
