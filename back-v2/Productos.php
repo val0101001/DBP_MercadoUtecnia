@@ -86,61 +86,76 @@
 </div>
 </body>
 
+<?php
+
+$email=$_POST["email"];
+$id=$_POST["id"];
+
+$mail="'";
+$mail.=$email;
+$mail.="'";
+
+$url='"';
+$url.="venta.php?id=".$id."&&email=".$mail;
+$url.='"';
+	
+echo "
 <script>
 function generate(){
-	var Form=document.getElementById('myForm');
-	var email=document.createElement('input');
-	email.type='hidden';
-	email.name='array[]';
-	email.value='".$email."';
-	Form.appendChild(email);
-	submit_form('myForm','Add','Tarjeta',false);
-	alert('Tarjeta agregada!');
-	var Form2=document.createElement('form');
-	Form2.setAttribute('method','post');
-	Form2.setAttribute('action','venta.php');
-	var email2=document.createElement('input');
-	email2.type='hidden';
-	email2.name='array[]';
-	email2.value='".$email."';
-	Form2.appendChild(email2);
-	var id=document.createElement('input');
-	id.type='hidden';
-	id.name='array[]';
-	id.value='".$id."';
-	Form2.appendChild(id);	
-	location.replace(".$url.");	
+        var Form=document.getElementById('myForm');
+        var email=document.createElement('input');
+        email.type='hidden';     
+        email.name='array[]';    
+        email.value='".$email."';
+        Form.appendChild(email);
+        submit_form('myForm','Add','Tarjeta',false);
+        alert('Tarjeta agregada!');
+        var Form2=document.createElement('form');
+        Form2.setAttribute('method','post');       
+        Form2.setAttribute('action','venta.php');  
+        var email2=document.createElement('input');
+        email2.type='hidden';     
+        email2.name='array[]';    
+        email2.value='".$email."';
+        Form2.appendChild(email2);
+        var id=document.createElement('input');
+        id.type='hidden';  
+        id.name='array[]'; 
+        id.value='".$id."';
+        Form2.appendChild(id);  
+        location.replace(".$url.");     
 }
 
 function submit_form(form_id,method,table,unique){
-	var Form=document.getElementById(form_id);
-	var Table=document.createElement('input');
-	Table.type='hidden';
-	Table.name='Table';
-	Table.value=table;
-	Form.appendChild(Table);
-	var Unique=document.createElement('input');
-	Unique.type='hidden';
-	Unique.name='Unique';
-	Unique.value=unique;
-	Form.appendChild(Unique);
-	if(method=='Add'){
-		Form.setAttribute('method','post');
-		Form.setAttribute('action','add_value.php');
-	}
-	else if(method=='Get'){
-		Form.setAttribute('method','get');
-		Form.setAttribute('action','get_values.php');
-	}
-	else if(method=='Edit'){
-		Form.setAttribute('method','post');
-		Form.setAttribute('action','edit_values.php');
-	}
-	else{
-		Form.setAttribute('method','post');
-		Form.setAttribute('action','delete_values.php');
-	}
-	Form.submit();
+        var Form=document.getElementById(form_id);
+        var Table=document.createElement('input');
+        Table.type='hidden';
+        Table.name='Table';
+        Table.value=table;
+        Form.appendChild(Table);
+        var Unique=document.createElement('input');
+        Unique.type='hidden';
+        Unique.name='Unique';
+        Unique.value=unique;
+        Form.appendChild(Unique);
+        if(method=='Add'){
+                Form.setAttribute('method','post');
+                Form.setAttribute('action','add_value.php');
+        }
+        else if(method=='Get'){
+                Form.setAttribute('method','get');
+                Form.setAttribute('action','get_values.php');
+        }
+        else if(method=='Edit'){
+                Form.setAttribute('method','post');
+                Form.setAttribute('action','edit_values.php');
+        }
+        else{
+                Form.setAttribute('method','post');
+                Form.setAttribute('action','delete_values.php');
+        }
+        Form.submit();
 }
-</script>
+</script>"
+?>
 </html>
