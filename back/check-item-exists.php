@@ -90,7 +90,7 @@ if($check){
     <body>
 	<div class="form-container">
 	<div class="container-fluid vh-10 justify-content-center align-items-center a">
-    <h2 style="font-size:40px">Lista de productos</h1>
+    <h2 style="font-size:40px">Lista de productos</h2>
     <script>
     
 		function param(form_id){
@@ -111,7 +111,7 @@ if($check){
 		<form id="myForm", action="Productos.php" method="post">
 			<input type=number min=0 name="id" class="form-control"></br>
             <div class="d-grid">
-            <button type="submit" onclick=param("myForm") class="btn btn-primary">Buscar</button></br>
+            <button type="submit" onclick=param("myForm") class="btn btn-primary">Buscar</button>
             </div>
         </form>
 		</br>
@@ -125,16 +125,16 @@ if($check){
 		$n_rows=mysqli_num_rows($products);
 		$field_info2=mysqli_fetch_fields($products);
 
-        echo'<div class="form-container-fluid vh-100 d-flex justify-content-center align-items-center">;
+        echo'</br><div class="form-container-fluid vh-10 d-flex justify-content-center align-items-center">
         <div class="form-container">
             <div class="col-md-8">';
         for($i=0;$i<$n_rows;$i++){
             '<div class="form-group">';
 			$row=mysqli_fetch_array($products);
 			for($j=0;$j<count($field_info2)-1;$j++){
-				$field_info2[$j]->name.' : '.$row[$j].'</br>';
+				echo $field_info2[$j]->name.' : '.$row[$j].'</br>';
 			}
-			'</br></div>';
+			echo '</br>';
 		}
             '</div>
         </div>
@@ -227,7 +227,7 @@ function submit_form(form_id,method,table,unique){
 			Precio: <input type="number" min=0 step=0.5 class="form-control" name=array[]></br>
             </div>
         </form>
-		<button type="submit" onclick="generate()" class="btn btn-primary">Enviar</button></div></div></div>
+		<button type="submit" onclick="("myForm")" class="btn btn-primary">Enviar</button></div></div></div>
 		';
 	}
 
