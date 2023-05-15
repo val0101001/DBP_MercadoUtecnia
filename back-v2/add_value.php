@@ -27,7 +27,7 @@ if ($data[0] === "") {
     $try = false;
 }
 
-if (($try&&$unique)||(!$unique)) {
+if ($try&&$unique) {
     $rows = "(";
     $info = "(";
 
@@ -59,7 +59,42 @@ if (($try&&$unique)||(!$unique)) {
 
     header("location:javascript://history.go(-1)");
 
-} else {
+}
+
+else if($unique==false){
+
+	$rows = "(";
+    	$info = "(";
+
+    for ($i = 0; $i < count($field_info); $i++) {
+        $rows .= $field_info[$i]->name;
+
+        if ($field_info[$i]->type === 253 || $field_info[$i]->type === 254) {
+            $info .= "'";
+        }
+        $info .= $data[$i];
+        if ($field_info[$i]->type === 253 || $field_info[$i]->type === 254) {
+            $info .= "'";
+        }
+
+        if ($i !== count($field_info) - 1) {
+            $rows .= ", ";
+            $info .= ", ";
+        }
+    }
+
+    $rows .= ")";
+    $info .= ")";
+
+    $query = "INSERT INTO $table $rows VALUES $info;";
+
+    $result = mysqli_query($link, $query);
+
+    header("location:javascript://history.go(-1)");	
+
+}
+
+else {
 echo '	
 <!DOCTYPE html>
     <html>
