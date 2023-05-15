@@ -62,28 +62,26 @@
 <body>
 <div class="container-fluid vh-100 justify-content-center align-items-center">
 	<div class="form-container">
-		<div class="col-md-8">
-			<form id='myForm' action='' method='post'>
-				<div class="mb-3">
-					<label class='form-label'>Numero de tarjeta</label>
-					<br>
-					<input type='number' name='array[]' class='form-control' required>
-				</div>
-				<div class="mb-3">
-					<label class='form-label'>Fecha de expiracion</label>
-					<br>
-					<input type='month' name='array[]' class='form-control' required>
-				</div>
-				<div class="mb-3">
-					<label class='form-label'>CCV</label>
-					<br>
-					<input type='number' min='100' max='999' name='array[]' class='form-control' required>
-				</div>
-				<div class="d-grid">
-					<button type="submit" onclick='generate()' class='btn btn-primary'>Confirmar</button>
-				</div>
-			</form>
-		</div>
+		<form id='myForm' action='' method='post'>
+			<div class="mb-3">
+				<label class='form-label'>Numero de tarjeta</label>
+				<br>
+				<input type='number' name='array[]' class='form-control' required>
+			</div>
+			<div class="mb-3">
+				<label class='form-label'>Fecha de expiracion</label>
+				<br>
+				<input type='month' name='array[]' class='form-control' required>
+			</div>
+			<div class="mb-3">
+				<label class='form-label'>CCV</label>
+				<br>
+				<input type='number' min='100' max='999' name='array[]' class='form-control' required>
+			</div>
+			<div class="d-grid">
+				<button type="submit" onclick='generate()' class='btn btn-primary'>Confirmar</button>
+			</div>
+		</form>
 	</div>
 </div>
 </body>
